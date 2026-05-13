@@ -1,0 +1,9 @@
+.DS_Store
+**/.gradle/
+**/build/
+**/.jmix/
+**/.idea/
+**/node_modules/
+sensor-data-visualizer/src/main/frontend/generated/
+# local Gradle/Maven-style cache (do not publish)
+sensor-data-visualizer/repo/

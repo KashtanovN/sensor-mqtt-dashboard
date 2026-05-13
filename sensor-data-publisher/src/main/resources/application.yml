@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: sensor-data-publisher
+
+sensor:
+  mqtt:
+    broker-url: tcp://127.0.0.1:1883
+    username: ""
+    password: ""
+    client-id: sensor-data-publisher
+    topic: sensors/demo/temperature
+  publish:
+    enabled: true
+    # Default: 600000 ms = 10 minutes (per assignment). Lower this for local demos.
+    interval-ms: 15000
+    temperature-min: 20
+    temperature-max: 60

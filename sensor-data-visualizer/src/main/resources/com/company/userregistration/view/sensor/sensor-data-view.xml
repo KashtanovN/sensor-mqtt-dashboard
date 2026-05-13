@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      xmlns:charts="http://jmix.io/schema/charts/ui"
+      title="msg://SensorDataView.title">
+    <data>
+        <collection id="readingsDc"
+                    class="com.company.userregistration.entity.SensorReading">
+            <fetchPlan extends="_local"/>
+            <loader id="readingsDl" readOnly="true">
+                <query>
+                    <![CDATA[select e from SensorReading e where e.sensor.id = :sensor order by e.measuredAt asc]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="false"/>
+    </facets>
+    <layout>
+        <vbox width="100%" spacing="true" padding="false">
+            <hbox width="100%" justifyContent="BETWEEN" alignItems="CENTER">
+                <span id="sensorSummary"/>
+                <button id="refreshBtn" text="msg://SensorDataView.refresh" icon="REFRESH"/>
+            </hbox>
+            <charts:chart id="temperatureChart" width="100%" minHeight="30em">
+                <charts:dataSet>
+                    <charts:source dataContainer="readingsDc"
+                                   categoryField="measuredAt"
+                                   valueFields="temperature"/>
+                </charts:dataSet>
+                <charts:series>
+                    <charts:line name="Temperature, °C"/>
+                </charts:series>
+                <charts:xAxes>
+                    <charts:xAxis/>
+                </charts:xAxes>
+                <charts:yAxes>
+                    <charts:yAxis/>
+                </charts:yAxes>
+            </charts:chart>
+        </vbox>
+    </layout>
+</view>

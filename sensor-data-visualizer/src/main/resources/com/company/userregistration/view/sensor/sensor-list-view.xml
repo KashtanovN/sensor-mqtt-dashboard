@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      title="msg://SensorListView.title"
+      focusComponent="sensorsDataGrid">
+    <data>
+        <collection id="sensorsDc"
+                    class="com.company.userregistration.entity.Sensor">
+            <fetchPlan extends="_base"/>
+            <loader id="sensorsDl" readOnly="true">
+                <query>
+                    <![CDATA[select e from Sensor e order by e.name]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <urlQueryParameters>
+            <pagination component="pagination"/>
+        </urlQueryParameters>
+    </facets>
+    <layout>
+        <hbox id="buttonsPanel" classNames="buttons-panel">
+            <button id="createBtn" action="sensorsDataGrid.create"/>
+            <button id="editBtn" action="sensorsDataGrid.edit"/>
+            <button id="removeBtn" action="sensorsDataGrid.remove"/>
+            <button id="openChartBtn" text="msg://SensorListView.openChart" themeNames="primary" icon="CHART"/>
+            <simplePagination id="pagination" dataLoader="sensorsDl"/>
+        </hbox>
+        <dataGrid id="sensorsDataGrid"
+                  width="100%"
+                  minHeight="20em"
+                  selectionMode="SINGLE"
+                  dataContainer="sensorsDc">
+            <actions>
+                <action id="create" type="list_create"/>
+                <action id="edit" type="list_edit"/>
+                <action id="remove" type="list_remove"/>
+            </actions>
+            <columns resizable="true">
+                <column property="name"/>
+                <column property="mqttTopic"/>
+                <column property="lastTemperature"/>
+                <column property="lastRecordedAt"/>
+            </columns>
+        </dataGrid>
+    </layout>
+</view>

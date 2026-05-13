@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      title="msg://SensorDetailView.title"
+      focusComponent="form">
+    <data>
+        <instance id="sensorDc"
+                  class="com.company.userregistration.entity.Sensor">
+            <fetchPlan extends="_base"/>
+            <loader/>
+        </instance>
+    </data>
+    <actions>
+        <action id="saveAction" type="detail_saveClose"/>
+        <action id="closeAction" type="detail_close"/>
+    </actions>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+    </facets>
+    <layout>
+        <formLayout id="form" dataContainer="sensorDc">
+            <textField id="nameField" property="name"/>
+            <textField id="mqttTopicField" property="mqttTopic"/>
+            <textField id="lastTemperatureField" property="lastTemperature" readOnly="true"/>
+            <dateTimePicker id="lastRecordedAtField" property="lastRecordedAt" readOnly="true"/>
+        </formLayout>
+        <hbox id="detailActions">
+            <button id="saveAndCloseBtn" action="saveAction"/>
+            <button id="closeBtn" action="closeAction"/>
+        </hbox>
+    </layout>
+</view>
