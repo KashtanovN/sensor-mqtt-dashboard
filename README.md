@@ -31,10 +31,11 @@ For a quicker demo you can temporarily lower `sensor.publish.interval-ms` in `se
 
 4. Open `http://localhost:8080`, log in as **admin / admin**, open **Sensors**, select the demo row, click **Temperature chart**, and use **Refresh** after new MQTT messages arrive.
 
-## Demo video and GitHub
+## Demo video
 
-- **Video:** record a short screen capture showing the broker (optional), publisher logs, Jmix UI with the chart updating, and upload it to your platform of choice (for example an unlisted YouTube video or a file in the repo release assets).
-- **GitHub:** create a public repository, push this workspace, and add the two per-project `README.md` files as included here.
+https://youtu.be/JbPy8nXHGt8
+
+Screen capture: Mosquitto (Docker), sensor simulator (publisher), Jmix visualizer — sensor list and temperature chart.
 
 ## Requirements
 
